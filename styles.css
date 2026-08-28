@@ -61,13 +61,42 @@ body::before {
 
 /* —— Cabeçalho —— */
 
-/* Barra propria acima do titulo: o botao nao disputa largura com o h1.
+/* Barra propria acima do titulo: os controles nao disputam largura com o h1.
    "Taxa Metabolica" em Syne 800 mede 13,27x o font-size — ao lado do botao
    sobravam 356px e o titulo quebrava em tres linhas em vez das duas do design. */
 .page-bar {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+/* Volta para o portal (§4 da spec). Link, nao botao, e na mesma aba: o hub
+   abre os apps com target=_blank e fica na aba de tras, entao abrir mais uma
+   aba e justamente o que criou o beco sem saida. URL absoluta porque os tres
+   deploys sao separados — nenhum caminho relativo chega la. */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* --accent-text, nao --accent: no tema claro o hover precisa escurecer (§2.1). */
+.btn-back:hover {
+  color: var(--accent-text);
+  border-color: var(--border-hover);
 }
 
 header {
