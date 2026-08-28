@@ -1,22 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Fernando Garcia Rangel">
 <meta name="description" content="Calcule sua taxa metabólica basal (TMB) com a fórmula de Mifflin-St Jeor. Estimativa de gasto por nível de atividade.">
-<meta name="theme-color" content="#111114">
+<meta name="theme-color" content="#09090b">
 <meta property="og:title" content="Calculadora de TMB">
 <meta property="og:description" content="TMB com Mifflin-St Jeor (1990) — gasto estimado por atividade.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://calculadora-tmb-five.vercel.app/">
 <meta name="twitter:card" content="summary">
 <title>Calculadora de TMB</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- Antes do CSS: evita o flash de tema errado ao recarregar. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('tmb_theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.dataset.theme = t;
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.content = t === 'light' ? '#fafafa' : '#09090b';
+      }
+    } catch (e) { /* localStorage indisponível — segue no tema escuro */ }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="wrap">
+  <div class="page-bar">
+    <button type="button" class="theme-toggle" id="btn-theme" aria-pressed="false" title="Alternar tema claro ou escuro">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20.5 13.5A8 8 0 0 1 10.5 3.5a8.5 8.5 0 1 0 10 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M12 3v2.2M12 18.8V21M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
   <header>
     <div class="label-tag">Calculadora</div>
     <h1>Taxa Metabólica<br><span>Basal</span></h1>

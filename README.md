@@ -1,6 +1,6 @@
 # Calculadora TMB
 
-Calculadora web da **taxa metabólica basal (TMB)** com a equação **Mifflin–St Jeor** (1990). Interface em português (pt-BR), tema escuro e estimativas de gasto energético por nível de atividade física.
+Calculadora web da **taxa metabólica basal (TMB)** com a equação **Mifflin–St Jeor** (1990). Interface em português (pt-BR), temas escuro e claro, e estimativas de gasto energético por nível de atividade física.
 
 **App online:** [calculadora-tmb-five.vercel.app](https://calculadora-tmb-five.vercel.app/)
 
@@ -14,7 +14,7 @@ Calculadora web da **taxa metabólica basal (TMB)** com a equação **Mifflin–
 
 ## Stack
 
-- HTML5, CSS3 (`styles.css`) e JavaScript vanilla em `app.js` (sem build nem dependências npm)
+- HTML5, CSS3 (`tokens.css` + `styles.css`) e JavaScript vanilla em `app.js` (sem build nem dependências npm)
 - Fontes: [Google Fonts](https://fonts.google.com/) (Nunito, Syne)
 
 ## Como usar localmente

@@ -151,14 +151,47 @@
     }
   }
 
+  // —— Tema —— (o valor inicial já foi aplicado pelo script inline no <head>)
+  const THEME_KEY = 'tmb_theme';
+
+  function temaAtual() {
+    return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+  }
+
+  function applyTheme(theme) {
+    const t = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = t === 'light' ? '#fafafa' : '#09090b';
+
+    const btn = document.getElementById('btn-theme');
+    btn.setAttribute('aria-pressed', t === 'light' ? 'true' : 'false');
+    btn.title = t === 'light' ? 'Mudar para o tema escuro' : 'Mudar para o tema claro';
+    btn.setAttribute('aria-label', btn.title);
+  }
+
+  function alternarTema() {
+    const proximo = temaAtual() === 'light' ? 'dark' : 'light';
+    applyTheme(proximo);
+    try {
+      localStorage.setItem(THEME_KEY, proximo);
+    } catch (e) { /* localStorage indisponível — o tema vale só nesta sessão */ }
+  }
+
   document.getElementById('btn-m').addEventListener('click', function () { setSex('M'); });
   document.getElementById('btn-f').addEventListener('click', function () { setSex('F'); });
   document.getElementById('btn-calc').addEventListener('click', calcular);
   document.getElementById('btn-copy').addEventListener('click', copiarResultado);
+  document.getElementById('btn-theme').addEventListener('click', alternarTema);
+
+  // Sincroniza aria-pressed/title com o tema que o <head> ja aplicou.
+  applyTheme(temaAtual());
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Enter' || e.repeat) return;
-    if (e.target && e.target.id === 'btn-copy') return;
+    // Enter nesses botoes ja dispara o click deles — nao recalcular por cima.
+    if (e.target && (e.target.id === 'btn-copy' || e.target.id === 'btn-theme')) return;
     calcular();
   });
 })();
