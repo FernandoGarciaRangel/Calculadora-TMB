@@ -179,6 +179,21 @@
     } catch (e) { /* localStorage indisponível — o tema vale só nesta sessão */ }
   }
 
+  // Em dev, o btn-back aponta para o hub local em vez de producao.
+  // A direcao importa: o HTML carrega a URL de producao literal e so aqui ela
+  // e reescrita. Se este script falhar ou o JS estiver desligado, degrada para
+  // o comportamento correto em producao, que e o unico que o usuario ve.
+  // Portas fixas do workspace: hub 8080, esta calculadora 8081, WeightChartS 3000.
+  function apontarBackParaHubLocal() {
+    const h = location.hostname;
+    if (h !== 'localhost' && h !== '127.0.0.1') return;
+    document.querySelectorAll('.btn-back').forEach(function (el) {
+      el.href = 'http://localhost:8080/';
+    });
+  }
+
+  apontarBackParaHubLocal();
+
   document.getElementById('btn-m').addEventListener('click', function () { setSex('M'); });
   document.getElementById('btn-f').addEventListener('click', function () { setSex('F'); });
   document.getElementById('btn-calc').addEventListener('click', calcular);

@@ -23,10 +23,23 @@ Calculadora web da **taxa metabólica basal (TMB)** com a equação **Mifflin–
 2. Abre `index.html` no navegador **ou** serve a pasta com um servidor estático, por exemplo:
 
 ```bash
-npx serve .
+npx serve . -l 8081
 ```
 
-Depois acede ao URL indicado no terminal (geralmente `http://localhost:3000`).
+Depois acede a `http://localhost:8081`.
+
+A porta e fixa de proposito. Os tres apps do workspace tem portas proprias para
+poderem estar de pe ao mesmo tempo — e o botao **← Apps** so consegue navegar
+para o hub local se o hub estiver no lugar esperado:
+
+| App | Porta | Comando |
+|---|---|---|
+| Apps-Hub | 8080 | `npx serve . -l 8080` |
+| Calculadora TMB | 8081 | `npx serve . -l 8081` |
+| WeightChartS | 3000 | `npm run dev` |
+
+Em `localhost` ou `127.0.0.1`, o **← Apps** aponta para `http://localhost:8080/`;
+em qualquer outro host, para o hub em producao.
 
 ## Deploy (Vercel)
 
