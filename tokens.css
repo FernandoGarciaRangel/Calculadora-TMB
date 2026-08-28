@@ -22,6 +22,7 @@
   --accent-dim: #c2410c;
   --accent-text: #f97316;
   --on-accent: #09090b;
+  --accent-tint: rgba(249, 115, 22, 0.12);
   --accent-glow: rgba(249, 115, 22, 0.18);
 
   /* forma */
@@ -53,5 +54,6 @@
 
   /* #f97316 sobre #fafafa dá 2,7:1 e reprova AA — orange-700 dá 5,0:1 */
   --accent-text: #c2410c;
+  --accent-tint: rgba(249, 115, 22, 0.06);
   --accent-glow: rgba(249, 115, 22, 0.10);
 }

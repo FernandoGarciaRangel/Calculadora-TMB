@@ -8,7 +8,6 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 14px 40px -20px var(--accent-glow),
     0 10px 30px -22px rgba(0, 0, 0, 0.75);
-  --accent-tint: rgba(249, 115, 22, 0.12);
   --result-bg: var(--surface-2);
   --result-border: rgba(249, 115, 22, 0.30);
   --item-bg: var(--surface);
@@ -20,7 +19,6 @@
 :root[data-theme="light"] {
   --card-bg: #ffffff;
   --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-  --accent-tint: rgba(249, 115, 22, 0.14);
   --result-bg: #fafafa;
   --result-border: rgba(249, 115, 22, 0.35);
   --item-bg: #ffffff;
