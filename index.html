@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Fernando Garcia Rangel">
-<meta name="description" content="Calcule sua taxa metabólica basal (TMB) com a fórmula de Mifflin-St Jeor. Estimativa de gasto por nível de atividade.">
+<meta name="description" content="Calcule sua taxa metabólica basal (TMB) com a fórmula de Mifflin-St Jeor ou Harris-Benedict. Estimativa de gasto por nível de atividade.">
 <meta name="theme-color" content="#09090b">
 <meta property="og:title" content="Calculadora de TMB">
-<meta property="og:description" content="TMB com Mifflin-St Jeor (1990) — gasto estimado por atividade.">
+<meta property="og:description" content="TMB com Mifflin-St Jeor (1990) ou Harris-Benedict (1984) — gasto estimado por atividade.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://calculadora-tmb-five.vercel.app/">
 <meta name="twitter:card" content="summary">
@@ -49,13 +49,39 @@
   <header>
     <div class="label-tag">Calculadora</div>
     <h1>Taxa Metabólica<br><span>Basal</span></h1>
-    <p class="subtitle">Fórmula de Mifflin-St Jeor · 1990</p>
+    <p class="subtitle" id="subtitle">Fórmula de Mifflin-St Jeor · 1990</p>
   </header>
 
   <div class="card">
-    <div class="sex-toggle" role="group" aria-label="Sexo (fórmula Mifflin-St Jeor)">
-      <button type="button" class="active" id="btn-m" aria-pressed="true">♂ Masculino</button>
-      <button type="button" id="btn-f" aria-pressed="false">♀ Feminino</button>
+    <div class="field">
+      <span class="field-label" id="lbl-formula">Fórmula</span>
+      <div class="seg-toggle" role="group" aria-labelledby="lbl-formula">
+        <button type="button" class="active" id="btn-mifflin" aria-pressed="true">Mifflin-St Jeor</button>
+        <button type="button" id="btn-harris" aria-pressed="false">Harris-Benedict</button>
+      </div>
+      <details class="formula-help">
+        <summary>Qual delas escolher?</summary>
+        <div class="formula-help-body">
+          <p><strong>Mifflin-St Jeor (1990)</strong> — a escolha padrão. É a mais precisa
+          para a maioria dos adultos saudáveis e continua confiável com sobrepeso e
+          obesidade. Na dúvida, fique com esta.</p>
+          <p><strong>Harris-Benedict (revisada, 1984)</strong> — a fórmula clássica, ainda
+          muito usada em planos e tabelas antigas. Tende a <em>superestimar</em> a TMB
+          (tipicamente 5–15% acima), sobretudo com mais gordura corporal. Use quando
+          precisar comparar com um cálculo que já foi feito por ela.</p>
+          <p class="formula-help-note">As duas são estimativas a partir de peso, altura,
+          idade e sexo — nenhuma mede composição corporal. Escolha uma e mantenha a mesma
+          para acompanhar a evolução.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="field field-gap">
+      <span class="field-label" id="lbl-sexo">Sexo</span>
+      <div class="seg-toggle" role="group" aria-labelledby="lbl-sexo">
+        <button type="button" class="active" id="btn-m" aria-pressed="true">♂ Masculino</button>
+        <button type="button" id="btn-f" aria-pressed="false">♀ Feminino</button>
+      </div>
     </div>
 
     <div class="field">
@@ -91,7 +117,7 @@
         <div class="result-badge">kcal / dia</div>
       </div>
       <div class="result-value" id="res-val">—</div>
-      <div class="result-unit">calorias necessárias em repouso</div>
+      <div class="result-unit">calorias necessárias em repouso · <span id="res-formula">Mifflin-St Jeor</span></div>
 
       <div class="result-actions">
         <button type="button" class="btn-copy" id="btn-copy">Copiar resumo</button>
@@ -108,7 +134,7 @@
   </div>
 
   <footer>
-    Mifflin MD, St Jeor ST, et al. — J Am Diet Assoc. 1990
+    <span id="footer-ref">Mifflin MD, St Jeor ST, et al. — J Am Diet Assoc. 1990</span>
     <span class="footer-author">Desenvolvido por Fernando Garcia Rangel</span>
   </footer>
 </div>
