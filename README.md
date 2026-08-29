@@ -37,6 +37,7 @@ para o hub local se o hub estiver no lugar esperado:
 |---|---|---|
 | Apps-Hub | 8080 | `npx serve . -l 8080` |
 | Calculadora TMB | 8081 | `npx serve . -l 8081` |
+| Refeição Livre | 8082 | `npx serve . -l 8082` |
 | WeightChartS | 3000 | `npm run dev` |
 
 Em `localhost` ou `127.0.0.1`, o **← Apps** aponta para `http://localhost:8080/`;
