@@ -1,0 +1,10 @@
+# Documentação e ferramental internos: versionados aqui, fora do deploy.
+# O app é servido da raiz do repo e sem fallback de rota, então cada arquivo
+# commitado vira uma URL pública — o CLAUDE.md seria servido como texto cru.
+#
+# NÃO acrescente index.html, tokens.css, styles.css nem app.js: são o app.
+
+CLAUDE.md
+README.md
+.claude/
+.claude-shots/

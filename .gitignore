@@ -21,3 +21,6 @@ node_modules/
 
 # Vercel
 .vercel
+
+# Screenshots do driver da skill run-* (agent tooling)
+.claude-shots/
